@@ -25,3 +25,51 @@ let pomodoroType = timer_type_pomodoro;
 let progressInterval;
 let timerValue = pomodoroTimerInSec;
 let multipleFactor = 360 / timerValue;
+
+let formatedInNumberInMinutes = (number)=> {
+    const minutes = Math.trunc(number / 60).toString().padStart(2,'0');
+    const seconds = Math.trunc(number % 60).toString().padStart(2,'0');
+
+    return `${minutes}:${seconds}`;
+}
+
+const startTimer =()=> {
+    progressInterval = setInterval(()=> {
+        timerValue--;
+        circleProgress();
+    },1000)
+    startBtn.style.display = 'none';
+    stopBtn.style.display = 'block';
+}
+
+const stopTimer =()=> {
+    clearInterval(progressInterval);
+    stopBtn.style.display = 'none';
+    startBtn.style.display = 'block';
+}
+
+let resetTimer =()=> {
+    clearInterval(progressInterval);
+    startBtn.style.display = 'block';
+    stopBtn.style.display = 'none';
+
+    if (pomodoroType === 'Pomodoro'){
+       timerValue = pomodoroTimerInSec;
+    } else if (pomodoroType === 'Shortbreak'){
+        timerValue = shortBreakTimeInSec;
+    } else {
+        timerValue = longBreakInSec;
+    }
+    multipleFactor = 360 / timerValue;
+    circleProgress();
+    audio.stop();
+}
+
+let circleProgress =()=> {
+    if(timerValue == 0){
+        stopTimer();
+        audio.play();
+    }
+    timer.innerHTML = `${formatedInNumberInMinutes(timerValue)}`;
+    circularProgressBar.style.background = `conic-gradient(#664efe ${timerValue * multipleFactor}deg, #422f66 0deg)`;
+}
