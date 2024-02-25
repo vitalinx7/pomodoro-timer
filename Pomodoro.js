@@ -4,7 +4,7 @@ let timer = document.querySelector('.container .progress-bar .progress-bar-value
 let startBtn = document.querySelector('.container .control-buttons .start-btn');
 let stopBtn = document.querySelector('.container .control-buttons .stop-btn');
 
-const audio = new Audio('beep_alarm.mp3')
+const audio = new Audio ("beep_alarm.mp3")
 
 let getType =(elem, type)=> {
     for(x of allTypes){
