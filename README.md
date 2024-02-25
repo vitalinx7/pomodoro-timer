@@ -14,7 +14,7 @@
 
 Pomodoro Timer with alarm, includes 5min short brake and 15min long break.
 
-▷ [Access the finished project](https://github.com/vitalinx7/pomodoro-timer)
+▷ [Access the finished project](https://vitalinx7.github.io/pomodoro-timer/)
 
 
 ## 🛠️ Technologies
